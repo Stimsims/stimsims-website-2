@@ -1,0 +1,37 @@
+---
+import Card from '../Card/Card.astro';
+import type { PostProps } from '../Post/types';
+
+export interface Props {
+  posts: PostProps[];
+}
+
+// Destructure the posts prop
+const { posts } = Astro.props as Props;
+
+// Dynamically import the thumbnails
+const importedThumbnails = await Promise.all(
+  posts.map(async (post) => {
+    if (post.data.thumbnail) {
+      const thumbnail = await import(`/src/content/posts/${post.data.thumbnail}`);
+      return { ...post, data: { ...post.data, thumbnail: thumbnail.default } };
+    }
+    return post;
+  })
+);
+---
+
+<main>
+  {importedThumbnails && importedThumbnails.length > 0 ? (
+    importedThumbnails.map((post) => (
+      <Card 
+        title={post.data.title} 
+        description={post.data.description} 
+        link={`/${post.slug}`} 
+        thumbnail={post.data.thumbnail}
+      />
+    ))
+  ) : (
+    <p>No posts available.</p>
+  )}
+</main>

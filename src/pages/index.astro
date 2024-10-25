@@ -1,37 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card/Card.astro';
-import type { PostProps } from '../components/Post/types';
+import PostList from '../components/PostList/PostList.astro';
 
-
-// Fetch all posts from the 'posts' collection outside of getStaticProps
+// Fetch all posts from the 'posts' collection
 const posts = await getCollection('posts');
-// Dynamically import the thumbnails
-const importedThumbnails = await Promise.all(
-  posts.map(async (post) => {
-    if (post.data.thumbnail) {
-      const thumbnail = await import("M:/Code/copilot/stimsims-astro/stimsims/src/content/posts/images/wallpaperbw.png");
-      return { ...post, data: { ...post.data, thumbnail: thumbnail.default } };
-    }
-    return post;
-  })
-);
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    {importedThumbnails && importedThumbnails.length > 0 ? (
-      importedThumbnails.map((post) => (
-        <Card 
-          title={post.data.title} 
-          description={post.data.description} 
-          link={`/${post.slug}`} 
-		  thumbnail={post.data.thumbnail}
-        />
-      ))
-    ) : (
-      <p>No posts available.</p>
-    )}
-  </main>
+  <PostList posts={posts} />
 </Layout>
