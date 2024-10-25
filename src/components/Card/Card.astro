@@ -1,0 +1,21 @@
+---
+
+import { Image} from 'astro:assets';
+
+export interface Props {
+  title: string;
+  description: string;
+  link: string;
+  thumbnail: ImageMetadata
+}
+
+const { title, description, link, thumbnail } = Astro.props;
+console.log("thumbnail", thumbnail);
+---
+
+<div class="card">
+  <Image src={thumbnail} alt={`Thumbnail for ${title}`} width={300} height={200} />
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <a href={link}>Read more</a>
+</div>

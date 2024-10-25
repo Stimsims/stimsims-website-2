@@ -1,0 +1,14 @@
+---
+import type { PostData } from './types';
+
+const { title, description, pubDate, author } = Astro.props as PostData;
+---
+
+<article>
+  <h1>{title}</h1>
+  <p>{description}</p>
+  <p>Published on: {pubDate}</p>
+  <p>Author: {author}</p>
+
+  <slot></slot>
+</article>
