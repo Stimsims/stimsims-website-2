@@ -1,26 +1,55 @@
 ---
 import Card from '../Card/Card.astro';
-import type { PostProps } from '../Post/types';
+import type { PostListProps } from '../Post/types';
 
 export interface Props {
-  posts: PostProps[];
+  posts: PostListProps[];
 }
 
 // Destructure the posts prop
 const { posts } = Astro.props as Props;
-
-
 ---
 
-<main>
+<style>
+  .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .post-list-item {
+    flex: 1 1 calc(33.333% - 1rem); /* Adjust the width as needed */
+    max-width: 300px; /* Optional: Set a max width for the cards */
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .post-list-item {
+      flex: 1 1 calc(50% - 1rem); /* Adjust for smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .post-list-item {
+      flex: 1 1 100%; /* Full width for very small screens */
+    }
+  }
+</style>
+
+<main class="post-list">
   {posts && posts.length > 0 ? (
     posts.map((post) => (
-      <Card 
-        title={post.data.title} 
-        description={post.data.description} 
-        link={`/posts/${post.slug}`} 
-        cover={post.data.cover}
-      />
+      <div class="post-list-item">
+        <Card 
+          title={post.data.title} 
+          description={post.data.description} 
+          link={`/posts/${post.slug}`} 
+          pubDate={post.data.pubDate}
+          cover={post.data.cover}
+        />
+      </div>
     ))
   ) : (
     <p>No posts available.</p>

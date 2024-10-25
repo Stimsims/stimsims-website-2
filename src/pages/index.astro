@@ -1,22 +1,29 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-
+import PostList from '../components/PostList/PostList.astro';
+import type { PostListProps } from '../components/Post/types';
 // Fetch all posts from the 'posts' collection
 const posts = await getCollection('posts');
-console.log("posts", posts);
+
+// Map the fetched posts to the PostProps type
+const mappedPosts: PostListProps[] = posts.map(post => ({
+  id: post.id,
+  slug: post.slug,
+  body: post.body,
+  collection: post.collection,
+  data: {
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    author: post.data.author,
+    cover: post.data.cover as ImageMetadata, // Ensure cover matches ImageMetadata type
+    coverAlt: post.data.coverAlt,
+  },
+  render: post.render,
+}));
 ---
 
 <Layout title="Welcome to Astro.">
-  <ul>
-    {posts.map((post) => (
-      <li>
-        <a href={`/posts/${post.slug}`}>
-          <Image src={post.data.cover} alt={post.data.coverAlt} width={100} height={100} />
-          <h2>{post.data.title}</h2>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <PostList posts={mappedPosts} />
 </Layout>
