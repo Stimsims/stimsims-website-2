@@ -1,9 +1,11 @@
 ---
+slug: "my-first-blog-post"
 title: "My First Blog Post"
 description: "This is the description of my first blog post."
 pubDate: "2023-10-01"
 author: "Your Name"
-thumbnail: "images/wallpaperbw.png"
+cover: "./images/wallpaperbw.png"
+coverAlt: "Description of the image"
 ---
 
 # My First Blog Post
@@ -12,6 +14,6 @@ Welcome to my first blog post in Astro using MDX!
 
 
 import { Image } from 'astro:assets';
-import thumbnail from  "images/wallpaperbw.png";
+import cover from  "images/wallpaperbw.png";
 
-<Image src={thumbnail} alt="Description of the image" width={800} height={600} />
+<Image src={cover} alt="Description of the image" width={800} height={600} />

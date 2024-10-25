@@ -6,11 +6,10 @@ export interface Props {
   title: string;
   description: string;
   link: string;
-  thumbnail: ImageMetadata
+  cover: ImageMetadata
 }
 
-const { title, description, link, thumbnail } = Astro.props;
-console.log("thumbnail", thumbnail);
+const { title, description, link, cover } = Astro.props;
 ---
 <style>
   .card {
@@ -45,7 +44,7 @@ console.log("thumbnail", thumbnail);
   }
 </style>
 <div class="card">
-  <Image src={thumbnail} alt={`Thumbnail for ${title}`} width={300} height={200} />
+  <Image src={cover} alt={`Thumbnail for ${title}`} width={300} height={200} />
   <h2 class="card-title">{title}</h2>
   <p class="card-description">{description}</p>
   <a href={link}>Read more</a>

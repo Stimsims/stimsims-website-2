@@ -6,7 +6,7 @@ export interface PostData {
   description: string;
   pubDate: string;
   author: string;
-  thumbnail: string;
+  cover: ImageMetadata;
 }
 
 export interface PostProps {
