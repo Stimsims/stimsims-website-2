@@ -63,7 +63,7 @@ const { title, description, link, cover, pubDate } = Astro.props;
   }
 </style>
 <div class="card">
-  {cover && <Image src={cover} alt={`Thumbnail for ${title}`} width={300} height={200} />}
+  {cover && <Image src={cover} alt={`Thumbnail for ${title}`} width={300} height={200} loading="eager"  />}
   <h2 class="card-title">{title}</h2>
   <p class="card-date">{pubDate}</p>
   <p class="card-description">{description}</p>
