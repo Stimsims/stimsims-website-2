@@ -2,13 +2,6 @@
 
 import { Image} from 'astro:assets';
 
-export interface Props {
-  title: string;
-  description: string;
-  link: string;
-  pubDate: string;
-  cover?: ImageMetadata
-}
 
 const { title, description, link, cover, pubDate } = Astro.props;
 ---

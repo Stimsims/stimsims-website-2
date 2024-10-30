@@ -1,7 +1,18 @@
 ---
-import type { PostData } from './types';
+/**
+ * Post Component
+ * 
+ * This component displays a blog post with a title, description, publication date, and author.
+ * It also includes a slot for additional content to be inserted.
+ * 
+ * Props:
+ * @property {string} title - The title of the post.
+ * @property {string} description - The description of the post.
+ * @property {string} pubDate - The publication date of the post.
+ * @property {string} author - The author of the post.
+ */
 
-const { title, description, pubDate, author } = Astro.props as PostData;
+const { title, description, pubDate, author } = Astro.props;
 ---
 
 <article>

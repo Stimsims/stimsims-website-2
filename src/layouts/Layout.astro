@@ -1,11 +1,9 @@
 ---
+// @ts-nocheck
 import { ViewTransitions } from 'astro:transitions';
 import Sidebar from '../components/Sidebar/Sidebar.svelte';
-
-
-interface Props {
-	title: string;
-}
+import '../components/variables.css'; // global CSS variables
+import '../components/typography.css'; // global typographic styles
 
 const { title } = Astro.props;
 ---
@@ -20,36 +18,35 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<style is:global>
-			:root {
-			  --color-primary: #3498db;
-			  --color-secondary: #2ecc71;
-			  --color-accent: #e74c3c;
-			  --color-background: #ecf0f1;
-			  --color-text: #2c3e50;
-			  --color-muted: #95a5a6;
-			}
-			html {
-				font-family: system-ui, sans-serif;
-				background: var(--color-background);
-			}
-			code {
-				font-family:
-					Menlo,
-					Monaco,
-					Lucida Console,
-					Liberation Mono,
-					DejaVu Sans Mono,
-					Bitstream Vera Sans Mono,
-					Courier New,
-					monospace;
-			}
-			body {
-			  background-color: var(--color-background);
-			  color: var(--color-text);
-			  font-family: Arial, sans-serif;
-			  margin: 0;
-			  padding: 0;
-			}
+            html, body {
+              height: 100%;
+              margin: 0;
+              padding: 0;
+            }
+            body {
+              display: flex;
+              flex-direction: column;
+              background-color: var(--color-background);
+              color: var(--color-text);
+              font-family: Arial, sans-serif;
+            }
+            main {
+              flex: 1;
+              padding-top: 1rem; /* Add padding to the top of main */
+              overflow-y: auto; /* Enable vertical scrolling */
+            }
+            /* Custom scrollbar styles */
+            main::-webkit-scrollbar {
+              width: 12px;
+            }
+            main::-webkit-scrollbar-track {
+              background: var(--color-background);
+            }
+            main::-webkit-scrollbar-thumb {
+              background-color: var(--color-primary);
+              border-radius: 6px;
+              border: 3px solid var(--color-background);
+            }
 		  </style>
 		  <ViewTransitions />
 	</head>

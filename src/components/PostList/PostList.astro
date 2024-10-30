@@ -1,13 +1,31 @@
 ---
-import Card from '../Card/Card.astro';
-import type { PostListProps } from '../Post/types';
+/**
+ * PostList Component
+ * 
+ * This component displays a list of posts as cards in a responsive flexbox grid layout.
+ * Each card includes an image, title, description, and publication date.
+ * 
+ * Props:
+ * @property {Array<Object>} posts - An array of post objects to be displayed.
+ * @property {string} posts[].id - The unique identifier for the post.
+ * @property {string} posts[].slug - The slug for the post URL.
+ * @property {string} posts[].body - The body content of the post.
+ * @property {string} posts[].collection - The collection to which the post belongs.
+ * @property {Object} posts[].data - The metadata for the post.
+ * @property {string} posts[].data.title - The title of the post.
+ * @property {string} posts[].data.description - The description of the post.
+ * @property {string} posts[].data.pubDate - The publication date of the post.
+ * @property {string} posts[].data.author - The author of the post.
+ * @property {ImageMetadata} posts[].data.cover - The cover image for the post.
+ * @property {string} posts[].data.coverAlt - The alt text for the cover image.
+ * @property {function} posts[].render - A function to render the post content.
+ */
 
-export interface Props {
-  posts: PostListProps[];
-}
+ 
+import Card from '../Card/Card.astro';
 
 // Destructure the posts prop
-const { posts } = Astro.props as Props;
+const { posts } = Astro.props;
 ---
 
 <style>
