@@ -3,5 +3,8 @@ import mdx from '@astrojs/mdx';
 import svelte from '@astrojs/svelte';
 
 export default defineConfig({
-  integrations: [mdx(), svelte({ preprocess: [] })],
+    site: 'https://Stimsims.github.io', // Full URL of your GitHub Pages site
+    base: '/stimsims-website-2', // Base path for your site
+    integrations: [mdx(), svelte({ preprocess: [] })],
+    
 });
