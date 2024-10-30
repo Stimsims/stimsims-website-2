@@ -19,9 +19,92 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <h1>{post.data.title}</h1>
-  <p>{post.data.description}</p>
-  <p>Published on: {post.data.pubDate}</p>
-  <p>Author: {post.data.author}</p>
-  <Content />
+  <div class="post-container">
+    <div class="post-header">
+      {post.data.cover && <img src={post.data.cover.src} alt={post.data.coverAlt || 'Cover image'} class="post-image" />}
+      <div class="post-info">
+        <h1 class="post-title">{post.data.title}</h1>
+        <p class="post-date">Published on: {post.data.pubDate}</p>
+        <p class="post-author">Author: {post.data.author}</p>
+      </div>
+    
+    </div>
+    <Content />
+  </div>
 </Layout>
+
+<style is:global>
+  .post-container {
+    padding: 1rem;
+    padding-left: 3rem; /* Add padding to the left to account for the minimized sidebar */
+  }
+
+  .post-header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .post-image {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    margin-bottom: 1rem;
+  }
+
+  .post-info {
+    text-align: center;
+  }
+
+  .post-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-date, .post-author {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 600px) {
+    .post-header {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .post-image {
+      margin-right: 1rem;
+      margin-bottom: 0;
+    }
+
+    .post-info {
+      text-align: left;
+    }
+  }
+
+  .post-row{
+    width:100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-columns {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+
+  @media (min-width: 600px) {
+    .post-columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .post-columns {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
