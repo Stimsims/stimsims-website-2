@@ -25,7 +25,7 @@
 
 import Card from '../Card/Card.astro';
 
-const base = import.meta.env.ASTRO_BASE_URL
+const base = import.meta.env.ASTRO_BASE_URL || '/';;
 // Destructure the posts prop
 const { posts } = Astro.props;
 ---
