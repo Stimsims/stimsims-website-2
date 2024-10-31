@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
   
-    const base = import.meta.env.ASTRO_BASE_URL;
+    const base = import.meta.env.BASE_URL;
 
     let isOpen = false;
   
