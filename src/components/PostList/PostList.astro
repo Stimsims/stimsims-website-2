@@ -1,4 +1,5 @@
 ---
+//@ts-nocheck // Disable TypeScript checking for this file
 /**
  * PostList Component
  * 
@@ -21,9 +22,10 @@
  * @property {function} posts[].render - A function to render the post content.
  */
 
- 
+
 import Card from '../Card/Card.astro';
 
+const base = import.meta.env.ASTRO_BASE_URL
 // Destructure the posts prop
 const { posts } = Astro.props;
 ---
@@ -60,10 +62,11 @@ const { posts } = Astro.props;
   {posts && posts.length > 0 ? (
     posts.map((post) => (
       <div class="post-list-item">
+        <h1>base {base}</h1>
         <Card 
           title={post.data.title} 
           description={post.data.description} 
-          link={`/posts/${post.slug}`} 
+          link={`${base}/posts/${post.slug}`} 
           pubDate={post.data.pubDate}
           cover={post.data.cover}
         />
