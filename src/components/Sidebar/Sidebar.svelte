@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
   
-    const base = import.meta.env.ASTRO_BASE_URL || '/';;
+    const base = import.meta.env.ASTRO_BASE_URL;
 
     let isOpen = false;
   
@@ -53,6 +53,6 @@
       </button>
       <h2>Navigation</h2>
       <a href="/">Home</a>
-      <a href={`${base}about`}>About</a>
+      <a href={`${base}/about`}>About</a>
     </div>
   </div>

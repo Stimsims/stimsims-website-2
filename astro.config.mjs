@@ -8,7 +8,7 @@ dotenv.config();
 
 export default defineConfig({
     site: 'https://Stimsims.github.io', // Full URL of your GitHub Pages site
-    base: process.env.ASTRO_BASE_URL, // Base path for your site
+    base: 'stimsims-website-2', // Base path for your site
     integrations: [mdx(), svelte({ preprocess: [] })],
     
 });
