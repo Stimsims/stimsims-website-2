@@ -32,7 +32,7 @@ body, p {
 
   /* Links */
   a {
-    color: var(--color-secondary);
+    color: var(--color-secondary-light);
     text-decoration: none;
   }
   
@@ -50,3 +50,21 @@ body, p {
   li {
     margin-bottom: 0.5rem;
   }
+
+
+  /* Text Sizes */
+.text-large {
+  font-size: 2rem; /* Large text size */
+}
+
+.text-medium {
+  font-size: 1.5rem; /* Medium text size */
+}
+
+.text-small {
+  font-size: 1rem; /* Small text size */
+}
+
+.text-centre{
+  text-align: center;
+}

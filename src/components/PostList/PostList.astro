@@ -17,6 +17,7 @@
  * @property {string} posts[].data.description - The description of the post.
  * @property {string} posts[].data.pubDate - The publication date of the post.
  * @property {string} posts[].data.author - The author of the post.
+ * @property {Array<string>} posts[].data.tags - An array of tags for the post.
  * @property {ImageMetadata} posts[].data.cover - The cover image for the post.
  * @property {string} posts[].data.coverAlt - The alt text for the cover image.
  * @property {function} posts[].render - A function to render the post content.
@@ -28,6 +29,9 @@ import Card from '../Card/Card.astro';
 const base = import.meta.env.BASE_URL;
 // Destructure the posts prop
 const { posts } = Astro.props;
+const publishedPosts = posts.filter((post) =>
+  import.meta.env.DEV || post.data.published === true
+);
 ---
 
 <style>
@@ -59,16 +63,16 @@ const { posts } = Astro.props;
 </style>
 
 <main class="post-list">
-  {posts && posts.length > 0 ? (
-    posts.map((post) => (
+  {publishedPosts && publishedPosts.length > 0 ? (
+    publishedPosts.map((post) => (
       <div class="post-list-item">
-        <h1>base {base}</h1>
         <Card 
           title={post.data.title} 
           description={post.data.description} 
           link={`${base}posts/${post.slug}`} 
           pubDate={post.data.pubDate}
           cover={post.data.cover}
+          tags={post.data.tags}
         />
       </div>
     ))

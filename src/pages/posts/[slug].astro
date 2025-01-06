@@ -23,7 +23,7 @@ const { Content } = await post.render();
 <Layout title={post.data.title}>
   <div class="post-container">
     <div class="post-header">
-      {post.data.cover && <img src={post.data.cover.src} alt={post.data.coverAlt || 'Cover image'} class="post-image" />}
+      {post.data.cover && <img src={post.data.cover.src} alt={post.data.coverAlt || 'Cover image'} class="post-image max-width-300" />}
       <div class="post-info">
         <h1 class="post-title">{post.data.title}</h1>
         <p class="post-date">Published on: {post.data.pubDate}</p>
@@ -51,7 +51,6 @@ const { Content } = await post.render();
   .post-image {
     width: 100%;
     height: auto;
-    max-width: 300px;
     margin-bottom: 1rem;
   }
 
@@ -92,19 +91,35 @@ const { Content } = await post.render();
     margin-bottom: 1rem;
   }
 
+  .post-columns-2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+
   .post-columns {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 800px) {
+    .post-columns-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
     .post-columns {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 1000px) {
+    .post-columns-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
     .post-columns {
       grid-template-columns: repeat(3, 1fr);
     }

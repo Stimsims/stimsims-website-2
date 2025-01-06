@@ -11,67 +11,27 @@
  * @property {string} link - The URL to which the card should link.
  * @property {ImageMetadata} cover - The image to display on the card.
  * @property {string} pubDate - The publication date of the content.
+ * @property {Array<string>} tags - An array of tags for the content.
  */
 
 import { Image} from 'astro:assets';
+import './card.css';
 
 
-const { title, description, link, cover, pubDate } = Astro.props;
+const { title, description, link, cover, pubDate, tags } = Astro.props;
 ---
-<style>
-  .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 1rem;
-    text-align: center;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
 
-  .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05); /* Slight zoom effect */
-  }
-
-  .card img {
-    border-bottom: 1px solid #ddd;
-    width: 100%;
-    height: auto;
-  }
-
-  .card-title {
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    margin: 1rem 0 0.5rem;
-  }
-
-  .card-date {
-    color: var(--color-muted);
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .card-description {
-    color: var(--color-secondary);
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .card a {
-    color: var(--color-accent);
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .card a:hover {
-    text-decoration: underline;
-  }
-</style>
-<div class="card">
-  {cover && <Image src={cover} alt={`Thumbnail for ${title}`} width={300} height={200} loading="eager"  />}
-  <h2 class="card-title">{title}</h2>
-  <p class="card-date">{pubDate}</p>
-  <p class="card-description">{description}</p>
-  <a href={link}>Read more</a>
-</div>
+<a href={link} class="card-link">
+  <div class="card">
+    {cover && <Image src={cover} alt={`Thumbnail for ${title}`} width={300} height={200} loading="eager" />}
+    <h2 class="card-title">{title}</h2>
+    <p class="card-date">{pubDate}</p>
+    <p class="card-tags">
+      {tags.map(tag => (
+        <a href={`/tags/${tag}`} class="tag-link">#{tag}</a>
+      ))}
+    </p>
+    <p class="card-description">{description}</p>
+    <a href={link} class="read-more">Read more</a>
+  </div>
+</a>

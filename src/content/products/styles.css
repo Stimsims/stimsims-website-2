@@ -1,0 +1,62 @@
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-content {
+    padding: 20px;
+  }
+
+.product-image {
+    padding: 20px;
+}
+
+.product-image img {
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.product-image:hover img {
+    transform: scale(1.05); /* Slightly zoom in the image on hover */
+}
+
+.spotify-button, .amazon-button, .youtube-button {
+    display: block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for hover effects */
+  }
+
+  .spotify-button:hover, .amazon-button:hover, .youtube-button:hover {
+        filter: brightness(1.2); /* Slightly brighten the button on hover */
+        transform: scale(1.05); /* Slightly zoom in the button on hover */
+    }
+
+    .amazon-button {
+        background-color: #FF9900; /* Amazon orange */
+    }
+
+    .youtube-button {
+        background-color: #FF0000; /* YouTube red */
+    }
+
+  @media (max-width: 768px) {
+    .product {
+      flex-direction: column;
+    }
+
+    .product-image {
+      order: 2; /* Display image on the bottom on narrow screens */
+    }
+
+    .product-content {
+      order: 1; /* Display content on top on narrow screens */
+      text-align: center;
+    }
+  }

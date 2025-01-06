@@ -4,6 +4,9 @@ import { ViewTransitions } from 'astro:transitions';
 import Sidebar from '../components/Sidebar/Sidebar.svelte';
 import '../components/variables.css'; // global CSS variables
 import '../components/typography.css'; // global typographic styles
+import './layout.css'; // local layout styles
+import '../components/spacing.css'
+import Background from '../components/Background/Rotating-Circles.astro'
 
 const { title } = Astro.props;
 ---
@@ -35,6 +38,8 @@ const { title } = Astro.props;
               flex: 1;
               padding-top: 1rem; /* Add padding to the top of main */
               overflow-y: auto; /* Enable vertical scrolling */
+              padding-left: 50px;
+              padding-top: 3rem;
             }
             /* Custom scrollbar styles */
             main::-webkit-scrollbar {
@@ -52,6 +57,8 @@ const { title } = Astro.props;
 		  <ViewTransitions />
 	</head>
 	<body>
+    <div class="animated-gradient"/>
+    <Background />
 		<Sidebar client:load />
 		<main>
 		  <slot></slot>
