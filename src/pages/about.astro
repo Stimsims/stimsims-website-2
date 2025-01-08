@@ -2,11 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About Us">
+<Layout title="About Me">
   <section class="about-section">
-    <h1>About Us</h1>
-    <p>Welcome to our website! We are dedicated to providing the best content for our users. Our team works hard to ensure that you have a great experience.</p>
-    <p>Feel free to explore our site and learn more about what we have to offer. If you have any questions, don't hesitate to contact us.</p>
+    <div id="about-content">
+      <h1>About Me</h1>
+      
+      <p class="text-left">Welcome to my website! I'm a math teacher by day, and data-miner by night.
+        This is a collection of datamining works investigating how people spend time on the internet. The way we spend our free time is
+        far more interesting than our time at work or at sleep. The things we seek voluntarily provide vital clues to how we understand the world, what's most rewarding to us and subsequently,
+        what interest domains provide useful context for math education. I aim to use this research to solve that age old question students ask their math teachers:
+      </p>
+
+      <h3 class="text-center">"when will I ever use this?" -- so many students</h3>
+    </div>
   </section>
 </Layout>
 
@@ -18,7 +26,10 @@ import Layout from '../layouts/Layout.astro';
     text-align: center;
     z-index: 1;
   }
-
+  #about-content{
+    max-width:700px;
+    margin: auto;
+  }
   .about-section::before {
     content: '';
     position: absolute;

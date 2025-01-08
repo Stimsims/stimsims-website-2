@@ -14,17 +14,19 @@ const tagCounts = posts.reduce((acc, post) => {
     acc[tag] = (acc[tag] || 0) + 1;
   });
   return acc;
-}, {});
+}, {})
+const formattedTags = Object.entries(tagCounts).map((item) => {
+  return {tag: item[0], count: item[1]}
+});
 
 const sortedTags = Object.entries(tagCounts).sort((a, b) => {
   return Number(b[1]) - Number(a[1]); // Ensure values are numbers
 });
-
 ---
 
 <Layout title="Tags">
   <Background />
-  <h1 style="text-align: center;">Post Tags</h1>
+  <h1 style="text-align: center;">Histogram of Post Tags</h1>
   <div style="text-align: center;">
     <ul style="list-style: none; padding: 0;">
       {sortedTags.map(([tag, count]) => (
@@ -34,8 +36,5 @@ const sortedTags = Object.entries(tagCounts).sort((a, b) => {
       ))}
     </ul>
   </div>
-  <BarGraph height="60vh" data={[
-    {tag: "hello", count: 5},
-    {tag: "the eiffle tower", count: 10},
-  ]} />
+  <BarGraph height="60vh" data={formattedTags} />
 </Layout>

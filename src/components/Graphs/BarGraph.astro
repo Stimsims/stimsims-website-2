@@ -22,7 +22,7 @@ console.log("BarGraph data", data);
   <div class="bar-graph-container">
     {data.map((item, index) => (
       <div class={`bar`}>
-        <div class={`bar-inner bar-${index}`} style={`height: ${(item.count / maxCount) * 100}%;`} title={`${item.tag}: ${item.count}`}></div>
+        <div class={`bar-inner bar-${index}`} style={`height: ${(item.count / maxCount) * 100}%;`} title={`${item}: ${item.count}`}></div>
         <span class="text-small">{item.tag} ({item.count})</span>
       </div>
     ))}
