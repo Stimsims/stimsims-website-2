@@ -3,8 +3,6 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Post from '../../components/Post/Post.astro';
-
-
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
 
@@ -18,20 +16,23 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
 const { Content } = await post.render();
+const { title, description,  cover  } = post.data;
+console.log("posts rendering", title)
 ---
 
-<Layout title={post.data.title}>
+<Layout title={title} description={description} image={cover}>
+
   <div class="post-container">
     <div class="post-header">
-      {post.data.cover && <img src={post.data.cover.src} alt={post.data.coverAlt || 'Cover image'} class="post-image max-width-300" />}
+      {cover && <img src={cover.src} alt={post.data.coverAlt || 'Cover image'} class="post-image max-width-300" />}
       <div class="post-info">
-        <h1 class="post-title">{post.data.title}</h1>
+        <h1 class="post-title">{title}</h1>
         <p class="post-date">Published on: {post.data.pubDate}</p>
         <p class="post-author">Author: {post.data.author}</p>
       </div>
     
     </div>
-    <Content />
+   <Content />
   </div>
 </Layout>
 

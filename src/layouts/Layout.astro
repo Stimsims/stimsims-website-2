@@ -7,8 +7,19 @@ import '../components/typography.css'; // global typographic styles
 import './layout.css'; // local layout styles
 import '../components/spacing.css'
 import Background from '../components/Background/Rotating-Circles.astro'
+import SEO from '../components/SEO/seo.astro';
 
-const { title } = Astro.props;
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+}
+
+
+const { title, description, image } = Astro.props;
+console.log(`Layout.astro title ${title} description ${description}`, image)
 ---
 
 <!doctype html>
@@ -20,6 +31,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
     <meta name="robots" content="noindex, nofollow">
+    <SEO  title={title} description={description} image={image.src} />
 		<title>{title}</title>
 		<style is:global>
             html, body {
