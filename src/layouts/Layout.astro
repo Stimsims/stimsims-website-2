@@ -8,7 +8,7 @@ import './layout.css'; // local layout styles
 import '../components/spacing.css'
 import Background from '../components/Background/Rotating-Circles.astro'
 import SEO from '../components/SEO/seo.astro';
-
+import DefaultImage from './../content/posts/images/wallpaperbw.png'
 
 export interface Props {
   title: string;
@@ -18,7 +18,7 @@ export interface Props {
 }
 
 
-const { title, description, image } = Astro.props;
+const { title, description, image, twitterImage } = Astro.props;
 console.log(`Layout.astro title ${title} description ${description}`, image)
 ---
 
@@ -31,7 +31,7 @@ console.log(`Layout.astro title ${title} description ${description}`, image)
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
     <meta name="robots" content="noindex, nofollow">
-    <SEO  title={title} description={description} image={image.src} />
+    <SEO  title={title} description={description} image={image | DefaultImage} twitterImage={twitterImage} />
 		<title>{title}</title>
 		<style is:global>
             html, body {
