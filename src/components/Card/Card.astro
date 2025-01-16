@@ -28,7 +28,7 @@ const { title, description, link, cover, pubDate, tags } = Astro.props;
     <p class="card-date">{pubDate}</p>
     <p class="card-tags">
       {tags.map(tag => (
-        <a href={`/tags/${tag}`} class="tag-link">#{tag}</a>
+        <a href={`/tags/${tag}`} class="tag-link" data-astro-prefetch>#{tag}</a>
       ))}
     </p>
     <p class="card-description">{description}</p>
