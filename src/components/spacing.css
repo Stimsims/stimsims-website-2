@@ -6,3 +6,14 @@
 .float-left{
     float: left;
 }
+
+.vertical-padding-100{
+    padding-bottom: 80px;
+    margin-top:40px;
+}
+
+.top-divider{
+    outline:0;
+    border:0;
+    border-top: 1px solid var(--color-text);
+}

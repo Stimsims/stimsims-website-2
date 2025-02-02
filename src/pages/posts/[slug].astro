@@ -28,7 +28,6 @@ console.log("posts rendering", post.data)
       <div class="post-info">
         <h1 class="post-title">{title}</h1>
         <p class="post-date">Published on: {post.data.pubDate}</p>
-        <p class="post-author">Author: {post.data.author}</p>
       </div>
     
     </div>
@@ -60,7 +59,14 @@ console.log("posts rendering", post.data)
     width: 300px;
     float:left;
   }
-
+  .post-image.width-500{
+    width: 500px;
+    float:left;
+  }
+  .post-image.width-800{
+    width: 800px;
+    float:left;
+  }
   .post-info {
     text-align: center;
   }
@@ -71,7 +77,6 @@ console.log("posts rendering", post.data)
   }
 
   .post-date, .post-author {
-    font-size: 0.875rem;
     color: var(--color-muted);
     margin-bottom: 1rem;
   }

@@ -14,7 +14,7 @@ code {
 }
 
 
-body, p {
+body, p, li, a {
     font-family: 'Courier New', sans-serif;
     color: var(--color-text); /* Use the color-text variable */
     line-height: 1.6;
@@ -23,12 +23,20 @@ body, p {
   }
   
   /* Headings */
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, a{
     font-family: 'Georgia', serif;
     color: var(--color-text); /* Use the color-text variable */
-    margin-top: 0;
+    margin-top: 20px;
+    margin-bottom:5px;
   }
   
+/* Increase heading sizes proportionally */
+h1 { font-size: 2.5em; } /* Adjust base size */
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; } /* Keeping h6 the base size */
 
   /* Links */
   a {
