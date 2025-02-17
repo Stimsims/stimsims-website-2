@@ -1,9 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getImage } from 'astro:assets';
+import neuralWings from '../content/posts/images/neural-purple-wings.png';
+
+const optimizedImage = await getImage({ src: neuralWings });
+console.log("optimised image", optimizedImage.src)
 ---
 
 <Layout title="About Me">
-  <section class="about-section">
+  <div class="background" style={`--background-url: url('${optimizedImage.src}');`}>
+    <div class="background-image"></div>
+  </div>
+  <section class="about-section"
+  
+  >
     <div id="about-content">
       <h1>About Me</h1>
       
@@ -18,31 +28,45 @@ import Layout from '../layouts/Layout.astro';
   </section>
 </Layout>
 
-<style>
-  .about-section {
-    position: relative;
-    padding: 2rem;
-    color: white;
-    text-align: center;
-    z-index: 1;
-  }
-  #about-content{
-    max-width:700px;
-    margin: auto;
-  }
-  .about-section::before {
+<style define:vars={{ optimizedImage }}>
+/* Full-screen background container */
+.background {
+    position: fixed; /* Fix to viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Full screen height */
+    z-index: -1; /* Push it behind content */
+    overflow: hidden;
+}
+
+/* Pseudo-element for the background image */
+.background::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
-    height: 400%;
-    background-image: url('/src/content/posts/images/neural-purple-wings.png'); /* Replace with your image path */
-    background-size: contain; /* Contain the image within the background */
-    background-position: 75% top; /* Position the image to the top right */
-    background-repeat: no-repeat; /* Ensure the image doesn't repeat */
-    transform: rotate(180deg) scaleX(-1); /* Flip the image upside down */
-    z-index: -1;
-    opacity: 0.5; /* Optional: Adjust the opacity for better text readability */
-  }
+    height: 90%;
+    background-image: var(--background-url);
+    /* background-image: url('/src/content/posts/images/neural-purple-wings.png'); */
+    background-size: contain; /* Ensures full coverage */
+    background-position: top right 25%;
+    background-repeat: no-repeat;
+    transform: rotate(180deg) scaleX(-1); /* Flips image */
+    opacity: 0.5; /* Adjust for readability */
+    display: block;
+    overflow-x:hidden;
+}
+
+/* About Section should be above the background */
+.about-section {
+    position: relative; /* Required for stacking above */
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    z-index: 1; /* Keep it above the background */
+    max-width: 700px;
+    margin: auto;
+}
 </style>
