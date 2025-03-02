@@ -29,6 +29,9 @@
       <div class="link-container">
         <a href={`${base}stem-meditation`}>Stem Meditation</a>
       </div>
+      <div class="link-container">
+        <a href={`${base}the-secret-palace-in-the-chimney`}>The Secret Palace in the Chimney</a>
+      </div>
       <!-- <div class="link-container">
         <a href={`${base}childrens-adventure-books-by-stimsims`}>Childrens Adventure Books</a>
       </div> -->
