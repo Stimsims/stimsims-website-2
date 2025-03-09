@@ -6,6 +6,9 @@ import PostList from '../components/PostList/PostList.astro';
 import ChartJS from '../components/ChartJs/index.svelte'
 // Fetch all posts from the 'posts' collection
 let posts = await getCollection('posts');
+
+// Sort posts by date in descending order (latest first)
+posts = posts.sort((a, b) => new Date(b.data.pubDate)-new Date(a.data.pubDate));
 ---
 
 <Layout title="Stimsims Home Page" description={"Stimsims home page with a collection of posts discussing different hobbies and their effects on the brain and education"} >
