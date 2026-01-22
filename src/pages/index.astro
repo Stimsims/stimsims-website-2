@@ -12,7 +12,7 @@ posts = posts.sort((a, b) => new Date(b.data.pubDate)-new Date(a.data.pubDate));
 ---
 
 <Layout title="Stimsims Home Page" description={"Stimsims home page with a collection of posts discussing different hobbies and their effects on the brain and education"} >
-  {import.meta.env.DEV && <ChartJS client:load  />}
+  <!-- {import.meta.env.DEV && <ChartJS client:load  />} -->
   <h1 class="text-centre">Stimsims Home Page</h1>
   <PostList posts={posts} />
 </Layout>
