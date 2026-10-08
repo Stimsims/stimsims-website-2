@@ -1,19 +1,19 @@
 <script>
     import { onMount } from 'svelte';
     import './sidebar.css';
-  
+
     const base = import.meta.env.BASE_URL;
 
     let isOpen = false;
-  
+
     function toggleSidebar() {
       isOpen = !isOpen;
     }
 
   </script>
-  
 
-  
+
+
   <div>
     <div class="sidebar polka-dots" class:open={isOpen}>
       <button class="toggle-btn" on:click={toggleSidebar}>
@@ -40,7 +40,7 @@
       </div>
       {#if import.meta.env.DEV}
         <div class="link-container">
-          <a href={`${base}experiment`}>Experiment</a>
+          <a href={`${base}experiment`}>Experiment Dev Link</a>
         </div>
       {/if}
     </div>
